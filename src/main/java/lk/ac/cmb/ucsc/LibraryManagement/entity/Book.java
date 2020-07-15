@@ -8,17 +8,16 @@ import javax.persistence.*;
  *
  */
 @Entity
-@Table(name = "BOOK")
 public class Book {
 
     @Id
     @GeneratedValue
     private int id;
     private String bookName;
-    private String Author;
+    private String writer;
     private String isbn;
     private String edition;
-    private String price;
+    private double price;
     private String manufacturedYear;
     private int num_of_copies;
     private String publisher;
@@ -42,12 +41,12 @@ public class Book {
         this.bookName = bookName;
     }
 
-    public String getAuthor() {
-        return Author;
+    public String getWriter() {
+        return writer;
     }
 
-    public void setAuthor(String author) {
-        Author = author;
+    public void setWriter(String writer) {
+        this.writer = writer;
     }
 
     public String getIsbn() {
@@ -66,11 +65,11 @@ public class Book {
         this.edition = edition;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -103,7 +102,7 @@ public class Book {
         return "Book{" +
                 "id=" + id +
                 ", bookName='" + bookName + '\'' +
-                ", Author='" + Author + '\'' +
+                ", writer='" + writer + '\'' +
                 ", isbn='" + isbn + '\'' +
                 ", edition='" + edition + '\'' +
                 ", price='" + price + '\'' +
