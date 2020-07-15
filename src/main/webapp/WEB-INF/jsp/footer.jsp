@@ -2,7 +2,7 @@
 <div class="container">
 	<hr>
 	<footer>
-		<p> &copy; Dimuthu Kasun, Tharindu Vindula, Thushara Deemantha, Anushka Sandaruwan </p>
+		<p style="text-align: center"><b> &copy; Dimuthu Kasun, Tharindu Vindula, Thushara Deemantha, Anushka Sandaruwan </b>  </p>
 	</footer>
 </div>
 

@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <head>
-    <title>LMS-Group2</title>
+    <title>LMS</title>
 
     <spring:url value="/resources/core/css/hello.css" var="coreCss"/>
 <spring:url value="/resources/core/css/bootstrap.min.css"
@@ -16,10 +16,8 @@
 
 <nav class="navbar navbar-inverse ">
 	<div class="container">
-		<div class="navbar-header">
-            <a class="navbar-brand"></a>
-            <h4> Library Management System</h4>
-		</div>
+            <h4 style="color: white; margin-left: 10%; width: 100%"> Library Management System</h4>
+
 	</div>
 
 </nav>
