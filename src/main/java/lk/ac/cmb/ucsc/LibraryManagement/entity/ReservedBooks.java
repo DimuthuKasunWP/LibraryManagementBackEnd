@@ -11,7 +11,7 @@ public class ReservedBooks {
     @GeneratedValue
     private Long id;
     private String bookName;
-    private String author;
+    private String writer;
 
     public ReservedBooks() {
     }
@@ -32,12 +32,12 @@ public class ReservedBooks {
         this.bookName = bookName;
     }
 
-    public String getAuthor() {
-        return author;
+    public String getwriter() {
+        return writer;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setwriter(String writer) {
+        this.writer = writer;
     }
 
     @Override
@@ -45,7 +45,7 @@ public class ReservedBooks {
         return "ReservedBooks{" +
                 "id=" + id +
                 ", bookName='" + bookName + '\'' +
-                ", author='" + author + '\'' +
+                ", writer='" + writer + '\'' +
                 '}';
     }
 }
