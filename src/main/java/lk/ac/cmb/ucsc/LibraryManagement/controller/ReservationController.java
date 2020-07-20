@@ -16,8 +16,12 @@ import java.util.List;
 public class ReservationController {
 
 
+    private final ReservationService reservationService;
+
     @Autowired
-    private ReservationService reservationService;
+    public ReservationController(ReservationService reservationService) {
+        this.reservationService = reservationService;
+    }
 
     @PostMapping(path = "/reserveBook", consumes = "application/json", produces = "application/json")
     public Reservation newReservation(@RequestBody Reservation reservation){
