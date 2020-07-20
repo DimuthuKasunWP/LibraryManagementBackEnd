@@ -16,7 +16,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/")
-@CrossOrigin
 public class BookController {
 
     private final BookService bookService;
@@ -46,8 +45,8 @@ public class BookController {
           HttpHeaders responseHeaders = new HttpHeaders();
             responseHeaders.set("Access-Control-Allow-Origin", "http://localhost:8080");
             responseHeaders.set("Access-Control-Allow-Methods", "POST");
-            responseHeaders.set("Access-Control-Expose-Headers", "Access-Control-Allow-Origin");
-            responseHeaders.set("Access-Control-Allow-Headers", "Content-Type");
+//            responseHeaders.set("Access-Control-Allow-Headers", "Content-Type");
+            responseHeaders.set("Vary", "Origin");
             responseHeaders.set("Access-Control-Max-Age", "86400");
             List<Book> books= bookService.getAllBooks();
             return ResponseEntity.ok().headers(responseHeaders).body(books);
