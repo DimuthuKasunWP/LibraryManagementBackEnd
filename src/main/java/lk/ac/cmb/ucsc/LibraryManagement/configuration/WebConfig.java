@@ -16,8 +16,8 @@ public class WebConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 System.out.println("CORS Enabled");
-                registry.addMapping("/api/v1/getAllBooks")
-                        .allowedOrigins("http://localhost:8080")
+                registry.addMapping("/api/v1/*")
+                        .allowedOrigins("http://localhost:8081")
                         .allowedHeaders("*")
                         .exposedHeaders("Access-Control-Allow-Origin","Access-Control-Allow-Credentials","Authorization")
                         .allowedMethods("HEAD", "OPTIONS", "GET", "POST", "PUT", "PATCH", "DELETE");

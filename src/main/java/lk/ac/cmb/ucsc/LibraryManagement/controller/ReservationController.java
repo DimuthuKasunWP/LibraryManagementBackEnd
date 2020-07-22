@@ -2,7 +2,6 @@ package lk.ac.cmb.ucsc.LibraryManagement.controller;
 
 
 
-import lk.ac.cmb.ucsc.LibraryManagement.entity.Book;
 import lk.ac.cmb.ucsc.LibraryManagement.entity.Reservation;
 import lk.ac.cmb.ucsc.LibraryManagement.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api/v1/")
 public class ReservationController {
 
@@ -45,7 +45,7 @@ public class ReservationController {
     }
 
     @GetMapping(path="/getReservationByENW" , produces = "application/json")
-    public List<Reservation> getReservationByEmailNameWriterName(String email,String bookname,String writer){
+    public List<Reservation> getReservationByEmailNameWriterName(String email, String bookname, String writer){
         try {
             return reservationService.getReservationByUserEmailAndBookNameAndWriter(email,bookname,writer);
         } catch (Exception exception){
