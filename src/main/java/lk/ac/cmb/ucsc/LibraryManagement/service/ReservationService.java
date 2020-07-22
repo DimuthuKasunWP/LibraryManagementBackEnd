@@ -17,15 +17,17 @@ import java.util.Optional;
 @Service
 public class ReservationService {
 
-    private final ReservationRepository reservationRepository;
+    private  ReservationRepository reservationRepository;
 
-    private final BookRepository booksRepository;
+    private BookRepository booksRepository;
 
     @Autowired
-    public ReservationService(ReservationRepository reservationRepository, BookRepository booksRepository) {
+    public ReservationService(ReservationRepository reservationRepository,BookRepository booksRepository) {
         this.reservationRepository = reservationRepository;
-        this.booksRepository = booksRepository;
+        this.booksRepository=booksRepository;
     }
+
+
 
     public Reservation reserveBook(Reservation reservation){
         return reservationRepository.save(reservation);
