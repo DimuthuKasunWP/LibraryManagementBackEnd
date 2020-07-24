@@ -44,8 +44,8 @@ public class ReservationController {
         }
     }
 
-    @GetMapping(path="/getReservationByENW" , produces = "application/json")
-    public List<Reservation> getReservationByEmailNameWriterName(String email, String bookname, String writer){
+    @GetMapping(path="/getReservationByENW{email}{name}{writer}" , produces = "application/json")
+    public List<Reservation> getReservationByEmailNameWriterName(@PathVariable("email") String email, @PathVariable("name") String bookname,@PathVariable("writer") String writer){
         try {
             return reservationService.getReservationByUserEmailAndBookNameAndWriter(email,bookname,writer);
         } catch (Exception exception){
@@ -64,9 +64,11 @@ public class ReservationController {
 
     }
 
-    @DeleteMapping(path="/deleteReservation",consumes = "application/json" ,produces = "application/json")
-    public boolean deleteReservation(@RequestBody Reservation reservation){
+    @DeleteMapping(path="/deleteReservation{id}",consumes = "application/json" ,produces = "application/json")
+    public boolean deleteReservation(@PathVariable String id){
         try{
+            Reservation reservation=new Reservation();
+            reservation.setId(Integer.parseInt(id));
             return reservationService.deleteReservation(reservation);
         }catch (Exception exception){
             exception.printStackTrace();

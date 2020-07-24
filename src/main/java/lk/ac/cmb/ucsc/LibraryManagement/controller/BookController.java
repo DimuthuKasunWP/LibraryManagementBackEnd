@@ -87,7 +87,7 @@ public class BookController {
     }
 
  @DeleteMapping(path="/deleteBook{id}",consumes = "application/json" ,produces = "application/json")
-    public boolean delete(@RequestBody String id){
+    public boolean delete(@PathVariable String id){
         try{
             Book book=new Book();
             book.setId(Integer.parseInt(id));
