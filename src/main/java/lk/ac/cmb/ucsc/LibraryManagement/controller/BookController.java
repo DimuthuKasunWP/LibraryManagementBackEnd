@@ -56,8 +56,8 @@ public class BookController {
         return null;
     }
     }
-    @GetMapping(path="/getBookByNW" , produces = "application/json")
-    public List<Book> getBookByNameAndWriter(String bookName, String writer){
+    @GetMapping(path="/getBookByNW{name}{writer}" , produces = "application/json")
+    public List<Book> getBookByNameAndWriter(@PathVariable("name") String bookName,@PathVariable("writer") String writer){
         try {
             return bookService.getBookByNameandWriter(bookName,writer);
         } catch (Exception exception){
@@ -65,8 +65,8 @@ public class BookController {
             return null;
         }
     }
-    @GetMapping(path="/getBookByN" , produces = "application/json")
-    public List<Book> getBookByName(String bookName){
+    @GetMapping(path="/getBookByN{name}" , produces = "application/json")
+    public List<Book> getBookByName(@PathVariable("name") String bookName){
         try {
             return bookService.getBookByName(bookName);
         } catch (Exception exception){
@@ -86,9 +86,11 @@ public class BookController {
 
     }
 
- @DeleteMapping(path="/deleteBook",consumes = "application/json" ,produces = "application/json")
-    public boolean delete(@RequestBody Book book){
+ @DeleteMapping(path="/deleteBook{id}",consumes = "application/json" ,produces = "application/json")
+    public boolean delete(@RequestBody String id){
         try{
+            Book book=new Book();
+            book.setId(Integer.parseInt(id));
             return bookService.deleteBook(book);
         }catch (Exception exception){
             exception.printStackTrace();
