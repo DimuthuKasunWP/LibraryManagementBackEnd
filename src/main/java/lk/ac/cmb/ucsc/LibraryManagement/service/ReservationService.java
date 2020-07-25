@@ -3,6 +3,7 @@ package lk.ac.cmb.ucsc.LibraryManagement.service;
 
 
 import com.google.common.collect.Lists;
+import lk.ac.cmb.ucsc.LibraryManagement.dto.ReservationDTO;
 import lk.ac.cmb.ucsc.LibraryManagement.entity.Book;
 import lk.ac.cmb.ucsc.LibraryManagement.entity.Reservation;
 import lk.ac.cmb.ucsc.LibraryManagement.repository.BookRepository;
@@ -29,8 +30,17 @@ public class ReservationService {
 
 
 
-    public Reservation reserveBook(Reservation reservation){
-        return reservationRepository.save(reservation);
+    public Reservation reserveBook(ReservationDTO reservation){
+        Book book = booksRepository.findByBookNameAndWriter(reservation.getBookName(),reservation.getWriter()).get(0);
+        Reservation entity= new Reservation();
+        System.out.println("reserve book "+book.toString());
+        entity.setBook(book);
+        entity.setId(reservation.getId());
+        entity.setDate(reservation.getDate());
+        entity.setEmail(reservation.getEmail());
+        entity.setUserName(reservation.getUserName());
+        entity.setValidPeriod(reservation.getValidPeriod());
+        return reservationRepository.save(entity);
     }
 
     public List<Reservation> getReservationByUserEmailAndBookNameAndWriter(String email,String bookname,String writer){
@@ -41,11 +51,17 @@ public class ReservationService {
         return Lists.newArrayList(reservationRepository.findAll());
     }
     
-    public Reservation updateReservation(Reservation reservation){
-        Optional<Reservation> byId =    reservationRepository.findById(reservation.getId());
-        Reservation retrieved=byId.get();
-        reservation.setId(retrieved.getId());
-        return reservationRepository.save(reservation);
+    public Reservation updateReservation(ReservationDTO reservation){
+        Book book = booksRepository.findByBookNameAndWriter(reservation.getBookName(),reservation.getWriter()).get(0);
+        Reservation entity= new Reservation();
+        System.out.println("reserve book "+book.toString());
+        entity.setBook(book);
+        entity.setId(reservation.getId());
+        entity.setDate(reservation.getDate());
+        entity.setEmail(reservation.getEmail());
+        entity.setUserName(reservation.getUserName());
+        entity.setValidPeriod(reservation.getValidPeriod());
+        return reservationRepository.save(entity);
     }
 
     public boolean deleteReservation(Reservation reservation){

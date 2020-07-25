@@ -13,7 +13,7 @@ public class Reservation {
     private String date;
     private String validPeriod;
     @ManyToOne
-    @JoinColumn(name = "BOOK", insertable = false, updatable = false)
+    @JoinColumn(name = "BOOK", nullable = false)
     private Book book;
 
     public Reservation() {
