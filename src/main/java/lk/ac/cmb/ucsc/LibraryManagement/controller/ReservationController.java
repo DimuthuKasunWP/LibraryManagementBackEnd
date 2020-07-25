@@ -2,6 +2,7 @@ package lk.ac.cmb.ucsc.LibraryManagement.controller;
 
 
 
+import lk.ac.cmb.ucsc.LibraryManagement.dto.ReservationDTO;
 import lk.ac.cmb.ucsc.LibraryManagement.entity.Reservation;
 import lk.ac.cmb.ucsc.LibraryManagement.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ public class ReservationController {
     }
 
     @PostMapping(path = "/reserveBook", consumes = "application/json", produces = "application/json")
-    public Reservation newReservation(@RequestBody Reservation reservation){
+    public Reservation newReservation(@RequestBody ReservationDTO reservation){
         try{
             return reservationService.reserveBook(reservation);
         }catch (Exception exception){
@@ -45,7 +46,7 @@ public class ReservationController {
     }
 
     @GetMapping(path="/getReservationByENW" , produces = "application/json")
-    public List<Reservation> getReservationByEmailNameWriterName(String email, String bookname, String writer){
+    public List<Reservation> getReservationByEmailNameWriterName(@RequestParam("email") String email, @RequestParam("name") String bookname,@RequestParam("writer") String writer){
         try {
             return reservationService.getReservationByUserEmailAndBookNameAndWriter(email,bookname,writer);
         } catch (Exception exception){
@@ -54,7 +55,7 @@ public class ReservationController {
         }
     }
     @PutMapping(path = "/updateReservation",consumes = "application/json" ,produces = "application/json")
-    public Reservation updateBook(@RequestBody Reservation reservation){
+    public Reservation updateBook(@RequestBody ReservationDTO reservation){
         try{
             return reservationService.updateReservation(reservation);
         }catch (Exception exception){
@@ -65,8 +66,10 @@ public class ReservationController {
     }
 
     @DeleteMapping(path="/deleteReservation",consumes = "application/json" ,produces = "application/json")
-    public boolean deleteReservation(@RequestBody Reservation reservation){
+    public boolean deleteReservation(@RequestParam("id") String id){
         try{
+            Reservation reservation=new Reservation();
+            reservation.setId(Integer.parseInt(id));
             return reservationService.deleteReservation(reservation);
         }catch (Exception exception){
             exception.printStackTrace();

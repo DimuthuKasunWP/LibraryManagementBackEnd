@@ -51,8 +51,6 @@ public class BookService {
     }
 
     public Book updateBook(Book book){
-        Book retriveBook= bookRepository.findByBookNameAndWriter(book.getBookName(),book.getWriter()).get(0);
-        book.setId(retriveBook.getId());
         return bookRepository.save(book);
     }
     public boolean deleteBook(Book book){

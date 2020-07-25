@@ -1,24 +1,27 @@
-package lk.ac.cmb.ucsc.LibraryManagement.entity;
+package lk.ac.cmb.ucsc.LibraryManagement.dto;
 
-import javax.persistence.*;
+public class ReservationDTO {
 
-@Entity
-public class Reservation {
-
-    @Id
-    @GeneratedValue
     private int id;
     private String userName;
     private String email;
     private String date;
     private String validPeriod;
-    @ManyToOne
-    @JoinColumn(name = "BOOK", nullable = false)
-    private Book book;
+    private String bookName;
+    private String writer;
 
-    public Reservation() {
+    public ReservationDTO(int id, String userName, String email, String date, String validPeriod, String bookName, String writer) {
+        this.id = id;
+        this.userName = userName;
+        this.email = email;
+        this.date = date;
+        this.validPeriod = validPeriod;
+        this.bookName = bookName;
+        this.writer = writer;
     }
 
+    public ReservationDTO() {
+    }
 
     public int getId() {
         return id;
@@ -60,24 +63,33 @@ public class Reservation {
         this.validPeriod = validPeriod;
     }
 
-    public Book getBook() {
-        return book;
+    public String getBookName() {
+        return bookName;
     }
 
-    public void setBook(Book book) {
-        this.book = book;
+    public void setBookName(String bookName) {
+        this.bookName = bookName;
+    }
+
+    public String getWriter() {
+        return writer;
+    }
+
+    public void setWriter(String writer) {
+        this.writer = writer;
+
     }
 
     @Override
     public String toString() {
-        return "Reservation{" +
+        return "ReservationDTO{" +
                 "id=" + id +
                 ", userName='" + userName + '\'' +
                 ", email='" + email + '\'' +
                 ", date='" + date + '\'' +
                 ", validPeriod='" + validPeriod + '\'' +
-                ", book=" + book.toString() +
+                ", bookName='" + bookName + '\'' +
+                ", writer='" + writer + '\'' +
                 '}';
     }
 }
-
